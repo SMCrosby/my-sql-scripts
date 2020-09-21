@@ -85,7 +85,20 @@ Insert Request (UserID, description, justification, deliverymode, total)
 	('2', 'Looking to buy a stand up desk', 'Looking to buy a stand up desk due to back problems', 'Amazon', 259.99),
 	('3', 'Need to buy more pens', 'Office supply of pens is running low', 'FedEX', 50.99);
     
-Select * from request
+Select * from request;
+	
+Create table LineItem (
+ID int not null primary key auto_increment,
+RequestID int not null,
+	foreign key (requestID)
+    references request(ID),
+ProductID int not null,
+	foreign key(ProductID)
+    references product(ID),
+Quantity int not null default 1
+);
+
+Select * from LineItem;
 	
 
     
